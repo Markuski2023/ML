@@ -1,5 +1,6 @@
 #include "../include/Layers/DenseLayer.h"
 #include "../include/Layers/ReLU.h"
+#include "../include/ErrorFunctions/MeanSquaredError.h"
 #include "../include/Optimizers/SGD.h"
 #include "../include/NeuralNetwork.h"
 #include <iostream>
@@ -14,7 +15,7 @@ int main() {
 
     // Create the neural network
     NeuralNetwork<double> network;
-    /*network.addLayer(std::make_shared<DenseLayer<double>>(inputSize, hiddenSize));
+    network.addLayer(std::make_shared<DenseLayer<double>>(inputSize, hiddenSize));
     network.addLayer(std::make_shared<ReLU>());
     network.addLayer(std::make_shared<DenseLayer<double>>(hiddenSize, outputSize));
 
@@ -22,6 +23,8 @@ int main() {
     // Set the optimizer
     SGD<double> optimizer(learningRate);
     network.setOptimizer(&optimizer);
+
+    MeanSquaredError<double> mse;
 
     // Training sample
     Matrix<double> input(1, inputSize);
@@ -36,12 +39,11 @@ int main() {
         Matrix<double> output = network.forward(input);
 
         // Calculate error (MSE)
-        Matrix<double> error = output - target;
-        double mse = error(0, 0) * error(0, 0);
+        double error = mse.calculateError(output, input);
 
         // Print output and error every few epochs
-        if (epoch % 1 == 0) {
-            std::cout << "Epoch " << epoch << " - Output: " << output(0, 0) << ", MSE: " << mse << std::endl;
+        if (epoch % 100 == 0) {
+            std::cout << "Epoch " << epoch << " - Output: " << output(0, 0) << ", MSE: " << error << std::endl;
         }
 
         // Backward pass and update weights
@@ -50,13 +52,6 @@ int main() {
     }
 
     network.save("parameters.json");
-*/
-    Matrix<double> input(1, inputSize);
-    input(0, 0) = 0.5;  // Example input
-
-    network.load("parameters.json");
-
-    network.save("test.json");
 
     Matrix<double> output = network.forward(input);
     std::cout << output(0,0) << std::endl;

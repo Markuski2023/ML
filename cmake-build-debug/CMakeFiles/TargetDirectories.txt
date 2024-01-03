@@ -1,5 +1,3 @@
 C:/Users/marku/Desktop/ML/cmake-build-debug/CMakeFiles/ML.dir
 C:/Users/marku/Desktop/ML/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/marku/Desktop/ML/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/marku/Desktop/ML/cmake-build-debug/_deps/json-build/CMakeFiles/edit_cache.dir
-C:/Users/marku/Desktop/ML/cmake-build-debug/_deps/json-build/CMakeFiles/rebuild_cache.dir

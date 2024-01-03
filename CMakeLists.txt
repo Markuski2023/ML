@@ -17,12 +17,6 @@ add_executable(ML main.cpp
         include/Optimizers/SGD.h
         include/Layers/ActivationLayer.h
         include/Layers/ReLU.h
+        include/ErrorFunctions/Error.h
+        include/ErrorFunctions/MeanSquaredError.h
 )
-
-include(FetchContent)
-
-FetchContent_Declare(json
-        GIT_REPOSITORY https://github.com/nlohmann/json.git
-        GIT_TAG v3.10.4)  # Specify the desired version
-
-FetchContent_MakeAvailable(json)

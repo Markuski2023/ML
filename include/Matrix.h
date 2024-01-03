@@ -20,9 +20,6 @@ public:
     // Copy constructor for creating a copy of an existing Matrix
     Matrix(const Matrix<T> &rhs);
 
-    // Deconstructor for handling any cleanup, if necessary
-    virtual ~Matrix();
-
     // Assignment operator for assigning one matrix to another
     Matrix<T>& operator=(const Matrix<T> &rhs);
 

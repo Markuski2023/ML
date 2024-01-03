@@ -20,19 +20,18 @@ public:
 
     void updateNetworkWeights();
 
-    // To-Do: Methods for predicting, saving/loading models, printing summary, etc.
-
     std::pair<std::vector<Matrix<T>>, std::vector<Matrix<T>>> getWeights();
     void save(const std::string& filename);
     void load(const std::string& filename);
     nlohmann::json matrixToJson(Matrix<T>& matrix);
     Matrix<T> jsonToMatrix(const nlohmann::json& json);
 
-        private:
+    // To-Do: Methods for predicting, printing summary, etc.
+
+private:
     double learningRate;
     std::vector<std::shared_ptr<Layer>> layers;
     Optimizer<T>* optimizer;
-
 };
 
 #include "../src/NeuralNetwork.tpp"
