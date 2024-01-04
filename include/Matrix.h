@@ -79,6 +79,7 @@ public:
     // Utility function to print the matrix to console
     void print() const;
 
+// Variables to store the number of rows and columns in the matrix
 private:
     // 2D vector to store the matrix data
     std::vector<std::vector<T>> mat;

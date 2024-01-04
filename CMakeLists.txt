@@ -19,4 +19,8 @@ add_executable(ML main.cpp
         include/Layers/ReLU.h
         include/ErrorFunctions/Error.h
         include/ErrorFunctions/MeanSquaredError.h
+        include/ErrorFunctions/BinaryCrossEntropyError.h
+        include/Layers/Sigmoid.h
+        include/Layers/Softmax.h
+        include/ErrorFunctions/CategoricalCrossEntropyError.h
 )

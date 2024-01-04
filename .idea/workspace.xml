@@ -20,34 +20,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e9a371a-2224-4556-8dcb-2a7d1d4ef920" name="Changes" comment="Added comments to Neural Network class">
-      <change afterPath="$PROJECT_DIR$/include/ErrorFunctions/Error.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/ErrorFunctions/MeanSquaredError.h" afterDir="false" />
+    <list default="true" id="3e9a371a-2224-4556-8dcb-2a7d1d4ef920" name="Changes" comment="Just about everything">
+      <change afterPath="$PROJECT_DIR$/include/ErrorFunctions/BinaryCrossEntropyError.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/ErrorFunctions/CategoricalCrossEntropyError.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/Layers/Sigmoid.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/Layers/Softmax.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-e9ed7f95cb9b38ee1dc6.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-dd18f42ae4bcdc840d0b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-26072becfef97a2dd9a4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-_deps.json-build-Debug-d5e35791dc1564e3ec77.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-01-02T22-24-09-0571.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-ML-Debug-5c6a310d140ced5a81c8.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/ML.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ML.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/_deps/json-subbuild/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/_deps/json-subbuild/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/parameters.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/parameters.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ErrorFunctions/MeanSquaredError.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ErrorFunctions/MeanSquaredError.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Matrix.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/NeuralNetwork.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/NeuralNetwork.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DenseLayer.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DenseLayer.tpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Matrix.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.tpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MatrixTests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MatrixTests.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/NeuralTests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/NeuralTests.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +122,7 @@
       <workItem from="1703333830535" duration="16700000" />
       <workItem from="1703461744215" duration="15298000" />
       <workItem from="1703606649036" duration="29068000" />
-      <workItem from="1704108108322" duration="39446000" />
+      <workItem from="1704108108322" duration="44827000" />
     </task>
     <task id="LOCAL-00001" summary="Added comments to Neural Network class">
       <option name="closed" value="true" />
@@ -144,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704289555332</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Just about everything">
+      <option name="closed" value="true" />
+      <created>1704298824095</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704298824095</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +170,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added comments to Neural Network class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments to Neural Network class" />
+    <MESSAGE value="Just about everything" />
+    <option name="LAST_COMMIT_MESSAGE" value="Just about everything" />
   </component>
 </project>

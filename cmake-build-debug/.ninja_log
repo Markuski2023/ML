@@ -1,13 +1,13 @@
 # ninja log v5
 3	46	7249894771823943	CMakeFiles/ML.dir/main.cpp.obj	a8a658e664eebbb6
-4694	7044	7259997206727971	ML.exe	e9b29f4be132d2d6
+4741	6113	7260311483963234	ML.exe	e9b29f4be132d2d6
 13	268	7249886546949550	CMakeFiles/ML.dir/src/ActivationFunction.cpp.obj	be86c698fea9492c
 17	269	7249886546949550	CMakeFiles/ML.dir/src/Optimizer.cpp.obj	6795a9a3b439f1e2
-7	1244	7259997148852512	CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj	53590c78a5d42869
+4	788	7260029667175117	CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj	53590c78a5d42869
 40	270	7249886546949550	CMakeFiles/ML.dir/src/Layer.cpp.obj	52df9597ba55cb04
 21	269	7249886546949550	CMakeFiles/ML.dir/src/NeuralNetwork.cpp.obj	ab25b46aaaa28437
 25	271	7249886546949550	CMakeFiles/ML.dir/src/ConvLayer.cpp.obj	4241d3a60ce95918
 31	270	7249886546979615	CMakeFiles/ML.dir/src/DenseLayer.cpp.obj	227c93f704b070f1
 6	329	7249891779139996	CMakeFiles/ML.dir/tests/Matrix.cpp.obj	d7f0bc351e31b835
 3	316	7249887358055475	CMakeFiles/ML.dir/src/Matrix.cpp.obj	22cac5caf4fbe28f
-12	4693	7259997183186665	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	ce9482e29f320d4b
+5	4740	7260311470300881	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	ce9482e29f320d4b
