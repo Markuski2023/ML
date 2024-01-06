@@ -23,4 +23,7 @@ add_executable(ML main.cpp
         include/Layers/Sigmoid.h
         include/Layers/Softmax.h
         include/ErrorFunctions/CategoricalCrossEntropyError.h
+        include/DataLoader.h
+        src/DataLoader.tpp
+        tests/DataLoaderTests.cpp
 )

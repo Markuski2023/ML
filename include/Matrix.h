@@ -11,6 +11,9 @@ public:
     // Default constructor
     Matrix();
 
+    // Constructor for vector of vectors
+    Matrix(std::vector<std::vector<T>>);
+
     // Parameterized constructor for creating a matrix with given dimensions and initial value
     Matrix(unsigned rows, unsigned cols, const T& initial);
 

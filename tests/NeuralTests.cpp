@@ -1,3 +1,4 @@
+/*
 #include "../include/Layers/DenseLayer.h"
 #include "../include/Layers/ReLU.h"
 #include "../include/Layers/Sigmoid.h"
@@ -71,4 +72,4 @@ int main() {
     std::cout << std::endl;
 
     return 0;
-}
+}*/

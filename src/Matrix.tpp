@@ -10,6 +10,32 @@
 template <typename T>
 Matrix<T>::Matrix() : rows(0), cols(0) {}
 
+// Constructor for vector of vector
+template <typename T>
+Matrix<T>::Matrix(std::vector<std::vector<T>> input) {
+    if (input.empty()) {
+        throw std::invalid_argument("Constructor error: Input vector of vectors is empty.");
+    }
+
+    if (input[0].empty()) {
+        throw std::invalid_argument("First row of input vector is empty");
+    }
+
+    rows = input.size();
+    cols = input[0].size();
+
+    mat.resize(rows, std::vector<T>(cols));
+
+    for (size_t i = 0; i < rows; ++i) {
+        if (input[i].size() != cols) {
+            throw std::invalid_argument("Constructor error: Inconsistent number of columns in input vector.");
+        }
+        for (size_t j = 0; j < cols; ++j) {
+            mat[i][j] = input[i][j];
+        }
+    }
+}
+
 // Parameterized constructor
 template <typename T>
 Matrix<T>::Matrix(unsigned rows, unsigned cols, const T& initial) : rows(rows), cols(cols), mat(rows, std::vector<T>(cols, initial)) {}
@@ -33,13 +59,16 @@ Matrix<T>::Matrix(const Matrix<T>& rhs) : rows(rhs.rows), cols(rhs.cols), mat(rh
 
 template <typename T>
 Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
-    // Self-assignment check: if rhs matrix is equal to the current, return the current
-    if(this == &rhs) {
+    // Self-assignment check to avoid unnecessary work
+    if (this == &rhs) {
         return *this;
     }
 
+    // Copy the size
     rows = rhs.rows;
     cols = rhs.cols;
+
+    // Copy the data
     mat = rhs.mat;
 
     return *this;
