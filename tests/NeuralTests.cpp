@@ -27,7 +27,7 @@ int main() {
     SGD<double> optimizer(learningRate);
     network.setOptimizer(&optimizer);
 
-    CrossEntropyError<double> crossEntropy; // Using Cross-Entropy Error for softmax
+    CategoricalCrossEntropyLoss<double> crossEntropy; // Using Cross-Entropy Error for softmax
 
     // Example training data for a classification task
     Matrix<double> input(1, inputSize);
