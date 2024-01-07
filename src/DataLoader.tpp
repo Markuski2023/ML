@@ -32,10 +32,6 @@ void DataLoader<T>::loadCSV(const std::string& filePath, T batch_size, bool shuf
     }
     file.close();
 
-    if (shuffle) {
-        std::random_shuffle(data.begin(), data.end());
-    }
-
     // Create batches
     for (size_t i = 0; i < data.size(); i++) {
         batch.push_back(data[i]);
