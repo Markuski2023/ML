@@ -12,19 +12,16 @@ template <typename T>
 class DataLoader {
 public:
     // Constructor to initialize the DataLoader with a file path
-    DataLoader(const std::string& filePath);
+    DataLoader();
 
     // Function to load data from the file
-    void loadCSV();
+    void loadCSV(const std::string& filePath, T batch_size=1, bool shuffle=true);
+
+    // Function to print out content of loader
+    void print();
 
     // Function to preprocess the loaded data
     void preprocess();
-
-    // Function to get the input size (number of features)
-    int getInputSize() const;
-
-    // Function to get the output size (number of classes or output dimensions)
-    int getOutputSize() const;
 
     // Function to split the dataset into training and test sets
     void splitData(double trainSplitRatio);
@@ -39,5 +36,6 @@ private:
 
 };
 
-#endif // DATA_LOADER_H
 #include "../src/DataLoader.tpp"
+
+#endif // DATA_LOADER_H

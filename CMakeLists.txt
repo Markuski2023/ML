@@ -3,7 +3,7 @@ project(ML)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(ML main.cpp
+add_executable(ML
         src/Matrix.tpp
         include/Matrix.h
         include/Optimizers/Optimizer.h
