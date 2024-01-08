@@ -20,6 +20,9 @@ public:
     void setError(Error<T>* err) { error = err; };
 
     void updateNetworkWeights();
+    double calculateTotalError(Matrix<double>& errorGradient);
+    T getLastErrorValue();
+    void setLastErrorValue(T errorValue);
 
     std::pair<std::vector<Matrix<T>>, std::vector<Matrix<T>>> getWeights();
     void save(const std::string& filename);
@@ -34,6 +37,7 @@ private:
     std::vector<std::shared_ptr<Layer>> layers;
     Optimizer<T>* optimizer;
     Error<T>* error;
+    T lastErrorValue;
 };
 
 #include "../src/NeuralNetwork.tpp"

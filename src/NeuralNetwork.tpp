@@ -13,7 +13,7 @@ template <typename T>
 Matrix<T> NeuralNetwork<T>::backward(Matrix<T> &networkOutput, Matrix<T> &expectedOutput) {
     // Calculate the initial error gradient based on the network's output and the expected output.
     // This is the derivative of the loss function with respect to the network's output.
-    Matrix<T> errorGradient = this->error(networkOutput, expectedOutput);
+    Matrix<T> errorGradient = error->calculateError(networkOutput, expectedOutput);
 
     // Iterate over the layers in reverse order (from output layer to input layer).
     for (auto reverseLayerIterator = layers.rbegin(); reverseLayerIterator != layers.rend(); ++reverseLayerIterator) {
@@ -82,6 +82,26 @@ std::pair<std::vector<Matrix<T>>, std::vector<Matrix<T>>> NeuralNetwork<T>::getW
         }
     }
     return std::pair(weights, biases);
+}
+
+double calculateTotalError(Matrix<double>& errorGradient) {
+    double totalError = 0.0;
+    for (size_t i = 0; i < errorGradient.get_rows(); ++i) {
+        for (size_t j = 0; j < errorGradient.get_cols(); ++j) {
+            totalError += errorGradient(i, j);
+        }
+    }
+    return totalError;
+}
+
+template <typename T>
+T NeuralNetwork<T>::getLastErrorValue() {
+    return lastErrorValue;
+}
+
+template <typename T>
+void NeuralNetwork<T>::setLastErrorValue(T errorValue) {
+    lastErrorValue = errorValue;
 }
 
 // Function to save the current parameters of a neural network into a JSON file.

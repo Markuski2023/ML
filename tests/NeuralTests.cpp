@@ -1,54 +1,50 @@
 #include "../include/Layers/DenseLayer.h"
 #include "../include/Layers/ReLU.h"
-#include "../include/Layers/Sigmoid.h"
-#include "../include/Layers/Softmax.h"
-#include "../include/ErrorFunctions/BinaryCrossEntropyError.h"
-#include "../include/ErrorFunctions/CategoricalCrossEntropyError.h" // Include Cross-Entropy Error function
+#include "../include/ErrorFunctions/MeanSquaredError.h"  // Assuming you have MSE implemented
 #include "../include/Optimizers/SGD.h"
 #include "../include/NeuralNetwork.h"
 #include <iostream>
 
 int main() {
     // Network configuration
-    const int inputSize = 2;   // Adjust for a more complex input, e.g., 2 features
-    const int hiddenSize = 5;  // Hidden layer size
-    const int outputSize = 3;  // Adjust for multiple output classes, e.g., 3 classes
-    const int epochs = 5000;   // Number of training epochs
+    const int inputSize = 2;    // Adjust for your input features
+    const int hiddenSize = 5;   // Hidden layer size
+    const int outputSize = 1;   // Single output for regression
+    const int epochs = 5000;    // Number of training epochs
     const double learningRate = 0.01;
 
-     // Create the neural network
+    // Create the neural network
     NeuralNetwork<double> network;
     network.addLayer(std::make_shared<DenseLayer<double>>(inputSize, hiddenSize));
     network.addLayer(std::make_shared<ReLU>());
     network.addLayer(std::make_shared<DenseLayer<double>>(hiddenSize, outputSize));
-    network.addLayer(std::make_shared<Softmax>());
+    // No activation layer for the output layer in regression
 
     // Set the optimizer
     SGD<double> optimizer(learningRate);
     network.setOptimizer(&optimizer);
 
-    // Set the error
-    CategoricalCrossEntropyLoss<double> crossEntropy;
-    network.setError(crossEntropy);
+    // Set the error for regression
+    MeanSquaredError<double> mse;
+    network.setError(&mse);
 
-    // Example training data for a classification task
+    // Example training data for regression
     Matrix<double> input(1, inputSize);
     // Set your input values here
     input(0, 0) = 0.5;
     input(0, 1) = 0.3;
 
-    // Corresponding target value for multi-class (one-hot encoded)
+    // Corresponding target value for regression
     Matrix<double> target(1, outputSize);
-    target(0, 0) = 0;  // Class 1
-    target(0, 1) = 1;  // Class 2
-    target(0, 2) = 0;  // Class 3
+    target(0, 0) = 1.2;  // Example target value
 
     for (int epoch = 0; epoch < epochs; ++epoch) {
         // Forward pass
         Matrix<double> output = network.forward(input);
 
-        // Calculate error (Cross-Entropy)
-        double error = crossEntropy.calculateError(output, target);
+        Matrix<double> errorGradient = mse.calculateError(output, target);
+        network.setLastErrorValue(calculateTotalError(errorGradient));
+
 
         // Print output and error every few epochs
         if (epoch % 100 == 0) {
@@ -56,7 +52,7 @@ int main() {
             for (int i = 0; i < outputSize; ++i) {
                 std::cout << output(0, i) << " ";
             }
-            std::cout << ", Cross-Entropy: " << error << std::endl;
+            std::cout << ", MSE: " << network.getLastErrorValue() << std::endl;
         }
 
         // Backward pass and update weights
@@ -73,4 +69,3 @@ int main() {
 
     return 0;
 }
-

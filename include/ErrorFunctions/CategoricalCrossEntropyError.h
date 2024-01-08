@@ -5,26 +5,24 @@
 #include <cmath>  // Include for log function
 
 template <typename T>
-class CategoricalCrossEntropyLoss : public Error<T> {
+class CategoricalCrossEntropyError : public Error<T> {
 public:
-    T calculateError(Matrix<T>& predicted, Matrix<T>& actual) override {
+    Matrix<T> calculateError(Matrix<T>& predicted, Matrix<T>& actual) override {
         if (predicted.get_rows() != actual.get_rows() || predicted.get_cols() != actual.get_cols()) {
             throw std::invalid_argument("Matrix dimensions must match");
         }
 
-        T total_loss = 0;
-        size_t count = predicted.get_rows();  // Number of samples
+        Matrix<T> errorGradient(predicted.get_rows(), predicted.get_cols());
 
-        for (size_t i = 0; i < count; ++i) {
-            T sample_loss = 0;
+        for (size_t i = 0; i < predicted.get_rows(); ++i) {
             for (size_t j = 0; j < predicted.get_cols(); ++j) {
-                sample_loss += -actual(i, j) * std::log(predicted(i, j) + static_cast<T>(10e-7));
+                // Assuming the derivative of cross-entropy error for each element
+                errorGradient(i, j) = -actual(i, j) / (predicted(i, j) + 1e-7);
             }
-
-            total_loss += sample_loss;
         }
-        return total_loss / count;
+        return errorGradient;
     }
 };
+
 
 #endif //ML_CATEGORICALCROSSENTROPYERROR_H

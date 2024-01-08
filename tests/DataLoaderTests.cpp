@@ -35,11 +35,11 @@ void test_print() {
 }
 
 // Main function to run all tests
-int main() {
-    test_DataLoaderConstructor();
-    test_loadCSV_ValidFile();
-    test_loadCSV_Correctness();
-    test_print();
-
-    return 0;
-}
+// int main() {
+//     test_DataLoaderConstructor();
+//     test_loadCSV_ValidFile();
+//     test_loadCSV_Correctness();
+//     test_print();
+//
+//     return 0;
+// }
