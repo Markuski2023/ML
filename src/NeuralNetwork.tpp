@@ -10,21 +10,20 @@
 #include <omp.h>
 
 template <typename T>
-// Method to pass error gradient from output layer to input layer -> uses a reverse iterator
-Matrix<T> NeuralNetwork<T>::backward(Matrix<T> &output, Matrix<T> &target) {
-    // Calculate the initial error gradient based on the output of the network and the target.
+Matrix<T> NeuralNetwork<T>::backward(Matrix<T> &networkOutput, Matrix<T> &expectedOutput) {
+    // Calculate the initial error gradient based on the network's output and the expected output.
     // This is the derivative of the loss function with respect to the network's output.
-    // Here, a simple Mean Squared Error (MSE) derivative is used: 2 * (output - target).
-    Matrix<T> errorGradient = (output - target) * 2;
+    Matrix<T> errorGradient = this->error(networkOutput, expectedOutput);
+
     // Iterate over the layers in reverse order (from output layer to input layer).
-    for (auto it = layers.rbegin(); it != layers.rend(); ++it) {
+    for (auto reverseLayerIterator = layers.rbegin(); reverseLayerIterator != layers.rend(); ++reverseLayerIterator) {
         // Call the backward method of each layer, passing the current error gradient.
         // Each layer updates the error gradient based on its own parameters and operations.
         // This updated error gradient is then passed to the preceding layer in the next iteration.
-        errorGradient = (*it)->backward(errorGradient);
+        errorGradient = (*reverseLayerIterator)->backward(errorGradient);
     }
+
     // Return the final error gradient after it has propagated through all layers.
-    // This can be used for further calculations if needed.
     return errorGradient;
 }
 
@@ -53,7 +52,6 @@ void NeuralNetwork<T>::addLayer(std::shared_ptr<Layer> layer) {
     // ActivationLayer, etc.) can be added to the neural network.
 
     // Add the given layer to the end of the 'layers' vector.
-    // This vector maintains the sequence of layers in the neural network.
     layers.push_back(layer);
 }
 

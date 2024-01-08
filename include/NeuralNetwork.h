@@ -17,6 +17,7 @@ public:
     Matrix<T> forward(Matrix<T>& input);
     Matrix<T> backward(Matrix<T> &output, Matrix<T> &target);
     void setOptimizer(Optimizer<T>* opt) { optimizer = opt; };
+    void setError(Error<T>* err) { error = err; };
 
     void updateNetworkWeights();
 
@@ -32,6 +33,7 @@ private:
     double learningRate;
     std::vector<std::shared_ptr<Layer>> layers;
     Optimizer<T>* optimizer;
+    Error<T>* error;
 };
 
 #include "../src/NeuralNetwork.tpp"

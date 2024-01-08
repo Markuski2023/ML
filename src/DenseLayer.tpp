@@ -25,18 +25,18 @@ Matrix<T> DenseLayer<T>::forward(Matrix<T>& input)  {
 
 // Backward pass computation
 template <typename T>
-Matrix<T> DenseLayer<T>::backward(Matrix<T>& outputError) {
+Matrix<T> DenseLayer<T>::backward(Matrix<T>& output) {
     // Given the error of the output (derivative of loss w.r.t output), compute backpropagation step
 
     // Calculate gradient of weights as input^T * outputError
-    Matrix<T> weightsGradient = input.transpose().dotTiling(outputError);
+    Matrix<T> weightsGradient = input.transpose().dotTiling(output);
 
     // Calculate error w.r.t the input of this layer (needed for previous layer in the network)
-    Matrix<T> inputError = outputError.dotTiling(weights.transpose());
+    Matrix<T> inputError = output.dotTiling(weights.transpose());
 
     // Store gradients for weights and biases for later use in updateWeights
     weightsError = weightsGradient;
-    biasesError = outputError.sum(0);  // Sum across columns to get biases error
+    biasesError = output.sum(0);  // Sum across columns to get biases error
 
     return inputError;  // Return the calculated input error
 }
