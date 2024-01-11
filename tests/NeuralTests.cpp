@@ -18,13 +18,12 @@ int main() {
     network.addLayer(std::make_shared<DenseLayer<double>>(inputSize, hiddenSize));
     network.addLayer(std::make_shared<ReLU>());
     network.addLayer(std::make_shared<DenseLayer<double>>(hiddenSize, outputSize));
-    // No activation layer for the output layer in regression
 
     // Set the optimizer
     SGD<double> optimizer(learningRate);
     network.setOptimizer(&optimizer);
 
-    // Set the error for regression
+    // Set the error
     MeanSquaredError<double> mse;
     network.setError(&mse);
 
@@ -66,6 +65,9 @@ int main() {
         std::cout << finalOutput(0, i) << " ";
     }
     std::cout << std::endl;
+
+    std::cout << network.returnOptimizerName() << std::endl;
+    std::cout << network.returnErrorName() << std::endl;
 
     return 0;
 }

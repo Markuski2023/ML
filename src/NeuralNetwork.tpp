@@ -104,6 +104,34 @@ void NeuralNetwork<T>::setLastErrorValue(T errorValue) {
     lastErrorValue = errorValue;
 }
 
+template <typename T>
+std::string NeuralNetwork<T>::returnErrorName() {
+    const char* mangledName = typeid(*error).name();
+    int status;
+    // Demangle the type name to make it human-readable.
+    // 'abi::__cxa_demangle' demangles the name, and the result is wrapped in a unique_ptr for automatic memory management.
+    std::unique_ptr<char, void(*)(void*)> demangledName(
+            abi::__cxa_demangle(mangledName, NULL, NULL, &status),
+            std::free
+    );
+    std::string name = demangledName.get();
+    return name;
+}
+
+template <typename T>
+std::string NeuralNetwork<T>::returnOptimizerName() {
+    const char* mangledName = typeid(*optimizer).name();
+    int status;
+    // Demangle the type name to make it human-readable.
+    // 'abi::__cxa_demangle' demangles the name, and the result is wrapped in a unique_ptr for automatic memory management.
+    std::unique_ptr<char, void(*)(void*)> demangledName(
+            abi::__cxa_demangle(mangledName, NULL, NULL, &status),
+            std::free
+    );
+    std::string name = demangledName.get();
+    return name;
+}
+
 // Function to save the current parameters of a neural network into a JSON file.
 // It is a template function, allowing it to handle different data types for the network parameters.
 template <typename T>

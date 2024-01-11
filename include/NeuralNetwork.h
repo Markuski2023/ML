@@ -23,6 +23,8 @@ public:
     double calculateTotalError(Matrix<double>& errorGradient);
     T getLastErrorValue();
     void setLastErrorValue(T errorValue);
+    std::string returnErrorName();
+    std::string returnOptimizerName();
 
     std::pair<std::vector<Matrix<T>>, std::vector<Matrix<T>>> getWeights();
     void save(const std::string& filename);
