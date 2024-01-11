@@ -26,4 +26,5 @@ add_executable(ML
         include/DataLoader.h
         src/DataLoader.tpp
         tests/DataLoaderTests.cpp
+        include/Layers/FlattenLayer.h
 )

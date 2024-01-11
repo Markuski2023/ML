@@ -4,9 +4,6 @@
 #include "../Matrix.h"
 #include "Layer.h"
 #include "../Optimizers/Optimizer.h"
-#include <memory>
-#include <vector>
-#include <random>
 
 template <typename T>
 class DenseLayer : public Layer {
