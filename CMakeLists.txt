@@ -4,12 +4,11 @@ project(ML)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(ML
-        src/Matrix.tpp
         include/Matrix.h
         include/Optimizers/Optimizer.h
-        src/NeuralNetwork.tpp
+        src/NeuralNetwork.cpp
         include/NeuralNetwork.h
-        src/DenseLayer.tpp
+        src/DenseLayer.cpp
         include/Layers/DenseLayer.h
         include/Layers/Layer.h
         tests/MatrixTests.cpp
@@ -24,7 +23,7 @@ add_executable(ML
         include/Layers/Softmax.h
         include/ErrorFunctions/CategoricalCrossEntropyError.h
         include/DataLoader.h
-        src/DataLoader.tpp
+        src/DataLoader.cpp
         tests/DataLoaderTests.cpp
         include/Layers/FlattenLayer.h
 )

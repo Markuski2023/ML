@@ -17,10 +17,10 @@ int main() {
     constexpr double learningRate = 0.01;
 
     // Create the neural network
-    NeuralNetwork<double> network;
-    network.addLayer(std::make_shared<DenseLayer<double>>(inputSize, hiddenSize));
+    NeuralNetwork network;
+    network.addLayer(std::make_shared<DenseLayer>(inputSize, hiddenSize));
     network.addLayer(std::make_shared<ReLU>());
-    network.addLayer(std::make_shared<DenseLayer<double>>(hiddenSize, outputSize));
+    network.addLayer(std::make_shared<DenseLayer>(hiddenSize, outputSize));
 
     // Set the optimizer
     SGD<double> optimizer(learningRate);

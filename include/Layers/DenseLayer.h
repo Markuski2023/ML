@@ -5,27 +5,24 @@
 #include "Layer.h"
 #include "../Optimizers/Optimizer.h"
 
-template <typename T>
 class DenseLayer : public Layer {
 public:
     DenseLayer();
     DenseLayer(unsigned inputSize, unsigned outputSize);
-    Matrix<T> forward(Matrix<T>& input) override;
-    Matrix<T> backward(Matrix<T>& outputError) override;
-    void updateWeights(Optimizer<T>& optimizer, double learningRate);
+    Matrix<double> forward(Matrix<double>& input) override;
+    Matrix<double> backward(Matrix<double>& outputError) override;
+    void updateWeights(Optimizer<double>& optimizer, double learningRate);
 
-    Matrix<T>& getWeights();
-    Matrix<T>& getBiases();
+    Matrix<double>& getWeights();
+    Matrix<double>& getBiases();
 
-    void setWeights(Matrix<T>& newWeights);
-    void setBiases(Matrix<T>& newBiases);
+    void setWeights(Matrix<double>& newWeights);
+    void setBiases(Matrix<double>& newBiases);
 
 private:
-    Matrix<T> weights, biases;
-    Matrix<T> weightsError, biasesError;
-    Matrix<T> input;
+    Matrix<double> weights, biases;
+    Matrix<double> weightsError, biasesError;
+    Matrix<double> input;
 };
-
-#include "../../src/DenseLayer.tpp"
 
 #endif // ML_DENSELAYER_H

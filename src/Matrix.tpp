@@ -326,40 +326,6 @@ Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
 
     unsigned tileSize = 128;
 
-    /*std::map<std::int8_t, std::chrono::duration<double>> times;
-
-    for (int i = 16; i < 128; i += 16) {
-        tileSize = i;
-        const int numRows = 64; // Adjust as needed
-        const int numCols = 128; // Adjust as needed
-
-        // Initialize two matrices with random or predetermined values
-        Matrix<double> matA(numRows, numCols); // Fill with values
-        Matrix<double> matB(numCols, numRows); // Fill with values
-
-        // Start timing
-        auto start = std::chrono::high_resolution_clock::now();
-
-        // Perform the dot product
-        Matrix<double> result = matA.dotTiling(matB);
-
-        // Stop timing
-        auto end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = end - start;
-
-        times[i] = elapsed;
-    }
-    double minTime = std::numeric_limits<double>::max();
-    unsigned fastestTileSize = 0;
-    for (const auto &pair : times) {
-        if (pair.second.count() < minTime) {
-            minTime = pair.second.count();
-            fastestTileSize = pair.first;
-        }
-    }
-
-    tileSize = fastestTileSize;*/
-
     Matrix<T> result(this->rows, rhs.cols, 0);
 
     #pragma omp parallel for collapse(3)

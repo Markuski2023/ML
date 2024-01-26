@@ -1,9 +1,16 @@
 # ninja log v5
-5183	6559	7266864284022698	ML.exe	b61edae57f208cb4
-15	1167	7266855335871356	CMakeFiles/ML.dir/tests/DataLoaderTests.cpp.obj	8f2e1679f8e81a42
-4	1300	7266855337198193	CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj	b736287b3affdbfc
-6	5182	7266864270201743	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
-25	1578	7274923770851756	CMakeFiles/ML.dir/tests/DataLoaderTests.cpp.obj	8f2e1679f8e81a42
-28	1591	7274923770977025	CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj	b736287b3affdbfc
-4	3237	7274923787396081	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
 3237	4034	7274923795377329	ML.exe	b61edae57f208cb4
+25	1578	7274923770851756	CMakeFiles/ML.dir/tests/DataLoaderTests.cpp.obj	8f2e1679f8e81a42
+7	952	7280122422830276	CMakeFiles/ML.dir/tests/MatrixTests.cpp.obj	b736287b3affdbfc
+16	2912	7280123206029596	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
+7	666	7280129412088798	CMakeFiles/ML.dir/src/DenseLayer.cpp.obj	48c26302fd34720e
+10	2909	7280129434435158	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
+6	702	7280129536988109	CMakeFiles/ML.dir/src/DataLoader.cpp.obj	20cf1e402a69e9ec
+7	514	7280129692014682	CMakeFiles/ML.dir/tests/DataLoaderTests.cpp.obj	8f2e1679f8e81a42
+6	1360	7280129936331514	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
+6	1356	7280132061698020	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
+3	2808	7280132076142111	CMakeFiles/ML.dir/src/NeuralNetwork.cpp.obj	8731cfac865830e1
+8	653	7280133122187135	CMakeFiles/ML.dir/src/DenseLayer.cpp.obj	48c26302fd34720e
+11	1392	7280133129578046	CMakeFiles/ML.dir/tests/NeuralTests.cpp.obj	9390736a7f7725b6
+4	2860	7280133144195943	CMakeFiles/ML.dir/src/NeuralNetwork.cpp.obj	8731cfac865830e1
+2860	3997	7280133155592453	ML.exe	27bfe8fee212c34

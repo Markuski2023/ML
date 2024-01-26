@@ -4,7 +4,7 @@
 // Test for DataLoader constructor
 void test_DataLoaderConstructor() {
     try {
-        DataLoader<double> loader;
+        DataLoader loader;
         std::cout << "Constructor test passed." << std::endl;
     } catch (const std::runtime_error& e) {
         std::cerr << "Constructor test failed: " << e.what() << std::endl;
@@ -14,7 +14,7 @@ void test_DataLoaderConstructor() {
 // Test for DataLoader loadCSV with valid file
 void test_loadCSV_ValidFile() {
     try {
-        DataLoader<double> loader;
+        DataLoader loader;
         loader.loadCSV("mock_data.csv", 16, true);
         std::cout << "loadCSV test passed for valid file." << std::endl;
     } catch (const std::exception& e) {
@@ -29,7 +29,7 @@ void test_loadCSV_Correctness() {
 }
 
 void test_print() {
-    DataLoader<double> loader;
+    DataLoader loader;
     loader.loadCSV("mock_data.csv", 2, true);
     loader.print();
 }

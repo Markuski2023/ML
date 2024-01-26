@@ -91,6 +91,6 @@ private:
     size_t rows, cols;
 };
 
-#include "../src/Matrix.tpp"
+#include "..\src\Matrix.tpp"
 
 #endif //ML_MATRIX_H
