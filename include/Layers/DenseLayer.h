@@ -10,7 +10,7 @@ public:
     DenseLayer();
     DenseLayer(unsigned inputSize, unsigned outputSize);
     Matrix<double> forward(Matrix<double>& input) override;
-    Matrix<double> backward(Matrix<double>& outputError) override;
+    Matrix<double> backward(Matrix<double>& input) override;
     void updateWeights(Optimizer<double>& optimizer, double learningRate);
 
     Matrix<double>& getWeights();

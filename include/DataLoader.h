@@ -14,7 +14,7 @@ public:
     DataLoader();
 
     // Function to load data from the file
-    void loadCSV(const std::string& filePath, double batch_size=1, bool shuffle=true);
+    void loadCSV(const std::string& filePath, int batch_size=1, bool shuffle=true);
 
     // Function to print out content of loader
     void print();
@@ -31,8 +31,7 @@ public:
 private:
     std::string filePath;
     std::vector<Matrix<double>> inputData;
-    std::vector<Matrix<double>> outputData;
-
+    std::vector<std::vector<double>> outputData;
 };
 
 #endif // DATA_LOADER_H
