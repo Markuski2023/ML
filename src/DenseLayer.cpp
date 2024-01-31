@@ -13,7 +13,7 @@ DenseLayer::DenseLayer() {
 }
 
 // Forward pass computation
-Matrix<double> DenseLayer::forward(Matrix<double>& input)  {
+Matrix<double> DenseLayer::forward(Matrix<double>A& input)  {
     this->input = input;  // Store the input matrix for use in backpropagation
     return (input.dotTiling(weights)) + biases;  // Compute output = (input * weights) + biases
 }

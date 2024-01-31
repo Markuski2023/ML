@@ -22,15 +22,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3e9a371a-2224-4556-8dcb-2a7d1d4ef920" name="Changes" comment="Just about everything">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ML.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ML.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/DataLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/DataLoader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Layers/DenseLayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Layers/DenseLayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Layers/FlattenLayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Layers/FlattenLayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Layers/Layer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Layers/Layer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataLoader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DenseLayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DenseLayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matrix.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.tpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +139,8 @@
       <workItem from="1706345709943" duration="3851000" />
       <workItem from="1706375633520" duration="1332000" />
       <workItem from="1706435125031" duration="3029000" />
+      <workItem from="1706606999659" duration="1194000" />
+      <workItem from="1706738838122" duration="2324000" />
     </task>
     <task id="LOCAL-00001" summary="Added comments to Neural Network class">
       <option name="closed" value="true" />

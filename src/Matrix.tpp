@@ -298,34 +298,12 @@ Matrix<T> Matrix<T>::transpose() {
 
 // Dot-product function
 template <typename T>
-Matrix<T> Matrix<T>::dotNoTiling(const Matrix<T>& rhs) const {
-    if (this->cols != rhs.rows) {
-        throw std::invalid_argument("The columns of Matrix A is not equal to the rows of Matrix B");
-    }
-
-    Matrix<T> result(this->rows, rhs.cols, 0);
-
-    #pragma omp parallel for collapse(2)
-    for (int i = 0; i < this->rows; ++i) {
-        for (int k = 0; k < this->cols; ++k) {
-            T temp = this->mat[i][k];
-            for (int j = 0; j < rhs.cols; ++j) {
-                result(i, j) += temp * rhs.mat[k][j];
-            }
-        }
-    }
-    return result;
-}
-
-// Dot-product function
-template <typename T>
 Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
     if (this->cols != rhs.rows) {
         throw std::invalid_argument("Incompatible dimensions for matrix multiplication");
     }
 
-    unsigned tileSize = 128;
-
+    unsigned tileSize = 128; // Tiling size, should be a power of 2 for best cache performance
     Matrix<T> result(this->rows, rhs.cols, 0);
 
     #pragma omp parallel for collapse(3)
@@ -333,16 +311,21 @@ Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
         for (int k = 0; k < this->cols; k += tileSize) {
             for (int j = 0; j < rhs.cols; j += tileSize) {
 
-                for (int ii = i; ii < std::min<int>(i + tileSize, this->rows); ++ii) {
-                    for (int kk = k; kk < std::min<int>(k + tileSize, this->cols); ++kk) {
-                        T temp = this->mat[ii][kk];
+                Matrix<T> subMat1(this, i, i + tileSize - 1, k, k + tileSize - 1);
+                Matrix<T> subMat2(rhs, k, k + tileSize - 1, j, j + tileSize - 1);
 
-                        for (int jj = j; jj < std::min<int>(j + tileSize, rhs.cols); ++jj) {
-                            result.mat[ii][jj] += temp * rhs.mat[kk][jj];
+                for (int ii = 0; ii < subMat1.rows; ++ii) {
+                    for (int jj = 0; jj < subMat2.cols; ++jj) {
+
+                        T temp = subMat1.mat[ii][0] * subMat2.mat[0][jj];
+
+                        for (int kk = 1; kk < subMat2.rows; ++kk) {
+                            temp += subMat1.mat[ii][kk] * subMat2.mat[kk][jj];
                         }
+
+                        result.mat[i + ii][j + jj] += temp;
                     }
                 }
-
             }
         }
     }
@@ -356,11 +339,11 @@ Matrix<T> Matrix<T>::Hadamard(const Matrix<T>& rhs) const {
         throw std::invalid_argument("Matrices does not have the same dimensions");
     }
 
-    Matrix<T> result(this->rows, this->cols, 0);
+    Matrix<T> result(*this); // Copy input matrix to avoid modifying original
 
-    for (int i = 0; i < this->rows; ++i) {
-        for (int j = 0; j < this->cols; ++j) {
-            result(i, j) = this->mat[i][j] * rhs.mat[i][j];
+    for (int i = 0; i < result.rows; ++i) {
+        for (int j = 0; j < result.cols; ++j) {
+            result.mat[i][j] *= rhs.mat[i][j]; // Multiply corresponding elements in place
         }
     }
     return result;
