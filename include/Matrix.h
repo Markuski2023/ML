@@ -72,7 +72,6 @@ public:
     Matrix<T> transpose();
 
     // Function to do a dot-product between two matrices
-    Matrix<T> dotNoTiling(const Matrix<T>& rhs) const;
     Matrix<T> dotTiling(const Matrix<T>& rhs) const;
 
     Matrix<T> Hadamard(const Matrix<T>& rhs) const;

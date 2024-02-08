@@ -303,7 +303,8 @@ Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
         throw std::invalid_argument("Incompatible dimensions for matrix multiplication");
     }
 
-    unsigned tileSize = 128; // Tiling size, should be a power of 2 for best cache performance
+    unsigned tileSize = 128;
+
     Matrix<T> result(this->rows, rhs.cols, 0);
 
     #pragma omp parallel for collapse(3)
@@ -311,21 +312,16 @@ Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
         for (int k = 0; k < this->cols; k += tileSize) {
             for (int j = 0; j < rhs.cols; j += tileSize) {
 
-                Matrix<T> subMat1(this, i, i + tileSize - 1, k, k + tileSize - 1);
-                Matrix<T> subMat2(rhs, k, k + tileSize - 1, j, j + tileSize - 1);
+                for (int ii = i; ii < std::min<int>(i + tileSize, this->rows); ++ii) {
+                    for (int kk = k; kk < std::min<int>(k + tileSize, this->cols); ++kk) {
+                        T temp = this->mat[ii][kk];
 
-                for (int ii = 0; ii < subMat1.rows; ++ii) {
-                    for (int jj = 0; jj < subMat2.cols; ++jj) {
-
-                        T temp = subMat1.mat[ii][0] * subMat2.mat[0][jj];
-
-                        for (int kk = 1; kk < subMat2.rows; ++kk) {
-                            temp += subMat1.mat[ii][kk] * subMat2.mat[kk][jj];
+                        for (int jj = j; jj < std::min<int>(j + tileSize, rhs.cols); ++jj) {
+                            result.mat[ii][jj] += temp * rhs.mat[kk][jj];
                         }
-
-                        result.mat[i + ii][j + jj] += temp;
                     }
                 }
+
             }
         }
     }

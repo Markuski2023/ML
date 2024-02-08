@@ -18,7 +18,7 @@ public:
         return output;
     }
 
-    Matrix<double> backward(Matrix<double> &input) {
+    Matrix<double> backwardPropagate(Matrix<double> &input) {
 
     }
 private:

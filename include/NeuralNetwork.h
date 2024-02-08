@@ -19,7 +19,7 @@ public:
     void setOptimizer(Optimizer<double>* opt) { optimizer = opt; };
     void setError(Error<double>* err) { error = err; };
 
-    void updateNetworkWeights();
+    void updateNetwork();
     double calculateTotalError(Matrix<double>& errorGradient);
     double getLastErrorValue();
     void setLastErrorValue(double errorValue);

@@ -13,30 +13,42 @@ DenseLayer::DenseLayer() {
 }
 
 // Forward pass computation
-Matrix<double> DenseLayer::forward(Matrix<double>A& input)  {
+Matrix<double> DenseLayer::forwardPropagate(Matrix<double>& input)  {
     this->input = input;  // Store the input matrix for use in backpropagation
-    return (input.dotTiling(weights)) + biases;  // Compute output = (input * weights) + biases
+    Matrix<double> output = input.dotTiling(weights);
+
+    // Manually add biases to each row of the output matrix
+    for (size_t i = 0; i < output.get_rows(); ++i) {
+        for (size_t j = 0; j < output.get_cols(); ++j) {
+            output(i, j) += biases(0, j);
+        }
+    }
+    return output;
 }
 
-// Backward pass computation
-Matrix<double> DenseLayer::backward(Matrix<double>& output) {
-    // Given the error of the output (derivative of loss w.r.t output), compute backpropagation step
-
-    // Calculate gradient of weights as input^T * outputError
-    Matrix<double> weightsGradient = input.transpose().dotTiling(output);
+// Backward pass computation for batched data
+Matrix<double> DenseLayer::backwardPropagate(Matrix<double>& outputError) {
+    // Calculate gradient of weights as sum of (input^T * outputError) for each data point in the batch
+    // Then, average the gradient over the batch size
+    Matrix<double> weightsGradient = input.transpose().dotTiling(outputError) / static_cast<double>(input.get_rows());
 
     // Calculate error w.r.t the input of this layer (needed for previous layer in the network)
-    Matrix<double> inputError = output.dotTiling(weights.transpose());
+    // This error is also averaged over the batch size
+    Matrix<double> inputError = outputError.dotTiling(weights.transpose()) / static_cast<double>(outputError.get_rows());
 
     // Store gradients for weights and biases for later use in updateWeights
+    // Averaging the biases gradient over the batch size
+    biasesError = outputError.sum(0) / static_cast<double>(outputError.get_rows());
+
+    // Store the averaged gradients
     weightsError = weightsGradient;
-    biasesError = output.sum(0);  // Sum across columns to get biases error
+    biasesError = biasesError;
 
     return inputError;  // Return the calculated input error
 }
 
 // Update Weights using an optimizer
-void DenseLayer::updateWeights(Optimizer<double>& optimizer, double learningRate) {
+void DenseLayer::update(Optimizer<double>& optimizer, double learningRate) {
     // Update weights and biases using the optimizer, based on stored gradients and learning rate
     optimizer.update(weights, biases, weightsError, biasesError, learningRate);
 }
