@@ -11,7 +11,6 @@ private:
     Matrix<double> lastOutput;
 
 public:
-    // Forward pass
 
 };
 

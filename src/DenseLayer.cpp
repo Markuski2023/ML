@@ -44,7 +44,7 @@ Matrix<double> DenseLayer::backwardPropagate(Matrix<double>& outputError) {
     weightsError = weightsGradient;
     biasesError = biasesError;
 
-    return inputError;  // Return the calculated input error
+    return inputErr0or;  // Return the calculated input error
 }
 
 // Update Weights using an optimizer

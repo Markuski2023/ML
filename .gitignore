@@ -24,3 +24,4 @@ Makefile
 # Do not ignore CMakeLists.txt files
 !CMakeLists.txt
 cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-7ffbd41acd412b20a052.json
+cmake-build-debug/Testing/Temporary/LastTest.log
