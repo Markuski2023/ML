@@ -21,7 +21,7 @@ public:
 
 private:
     Matrix<double> weights, biases;
-    Matrix<double> weightsError, biasesError;
+    Matrix<double> storedWeightGradients, storedBiasGradients;
     Matrix<double> input;
 };
 

@@ -8,14 +8,11 @@
 #include "../json.hpp"
 
 Matrix<double> NeuralNetwork::backward(Matrix<double> &networkOutput, Matrix<double> &expectedOutput) {
-    // Calculate the initial error gradient based on the predicted output and the true output.
     Matrix<double> errorGradient = error->calculateError(networkOutput, expectedOutput);
 
     for (auto reverseLayerIterator = layers.rbegin(); reverseLayerIterator != layers.rend(); ++reverseLayerIterator) {
         errorGradient = (*reverseLayerIterator)->backwardPropagate(errorGradient);
     }
-
-    // Return the final error gradient after it has propagated through all layers.
     return errorGradient;
 }
 
@@ -30,11 +27,6 @@ Matrix<double> NeuralNetwork::forward(Matrix<double> &inputData) {
 }
 
 void NeuralNetwork::addLayer(std::shared_ptr<Layer> layer) {
-    // The method takes a shared pointer to a Layer object as an input.
-    // This allows for polymorphism, as different types of layers (like DenseLayer,
-    // ActivationLayer, etc.) can be added to the neural network.
-
-    // Add the given layer to the end of the 'layers' vector.
     layers.push_back(layer);
 }
 
@@ -43,7 +35,6 @@ void NeuralNetwork::updateNetwork() {
         // Dynamic cast to check if the layer is a DenseLayer
         auto denseLayer = std::dynamic_pointer_cast<DenseLayer>(layer);
         if (denseLayer) {
-            // Update layer using the optimizer and learning rate
             denseLayer->update(*optimizer, learningRate);
         }
     }

@@ -5,12 +5,24 @@
 #include <cmath>
 
 class Sigmoid : public ActivationLayer {
-private:
-    Matrix<double> lastOutput;  // Store the last output of the forward pass
-
 public:
+    Matrix<double> forwardPropagate(Matrix<double> &input) override {
+        for (size_t i = 0; i < input.get_rows(); ++i) {
+            for (size_t j = 0; j < input.get_cols(); ++j) {
+                input(i, j) = 1/(1 + exp(-input(i, j)));
+            }
+        }
+        return input;
+    }
 
+    Matrix<double> backwardPropagate(Matrix<double> &input) override {
+        for (size_t i = 0; i < input.get_rows(); ++i) {
+            for (size_t j = 0; j < input.get_cols(); ++j) {
+                input(i, j) = 1 - (1/(1 + exp(-input(i, j))));
+            }
+        }
+        return input;
+    }
 };
-
 
 #endif //ML_SIGMOID_H

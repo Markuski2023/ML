@@ -7,7 +7,7 @@ template <typename T>
 class Optimizer {
 public:
     virtual void update(Matrix<T>& weights, Matrix<T>& biases,
-                        Matrix<T>& gradWeights, Matrix<T>& gradBiases,
+                        Matrix<T>& weightGradients, Matrix<T>& biasGradients,
                         double learningRate) = 0;
 };
 

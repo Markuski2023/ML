@@ -328,23 +328,6 @@ Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
     return result;
 }
 
-// Hadamard product
-template <typename T>
-Matrix<T> Matrix<T>::Hadamard(const Matrix<T>& rhs) const {
-    if (this->rows != rhs.rows || this->cols != rhs.cols) {
-        throw std::invalid_argument("Matrices does not have the same dimensions");
-    }
-
-    Matrix<T> result(*this); // Copy input matrix to avoid modifying original
-
-    for (int i = 0; i < result.rows; ++i) {
-        for (int j = 0; j < result.cols; ++j) {
-            result.mat[i][j] *= rhs.mat[i][j]; // Multiply corresponding elements in place
-        }
-    }
-    return result;
-}
-
 template<typename T>
 Matrix<T> Matrix<T>::sum(int dim) const {
     if (dim == 0) { // Sum across columns

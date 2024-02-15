@@ -1,16 +1,10 @@
 #include "../include/Matrix.h"
 #include "../include/Layers/DenseLayer.h"
 
-
-// Implementation of a Dense Layer for neural networks using double as the data type
 DenseLayer::DenseLayer(unsigned inputSize, unsigned outputSize)
-        : weights(inputSize, outputSize), biases(1, outputSize) {
-    // Constructor initializes a dense layer with given input and output sizes.
-}
+        : weights(inputSize, outputSize), biases(1, outputSize) {}
 
-DenseLayer::DenseLayer() {
-    // Default constructor
-}
+DenseLayer::DenseLayer() {}
 
 // Forward pass computation
 Matrix<double> DenseLayer::forwardPropagate(Matrix<double>& input)  {
@@ -27,54 +21,22 @@ Matrix<double> DenseLayer::forwardPropagate(Matrix<double>& input)  {
 }
 
 // Backward pass computation for batched data
-Matrix<double> DenseLayer::backwardPropagate(Matrix<double>& outputError) {
-    // Calculate gradient of weights as sum of (input^T * outputError) for each data point in the batch
-    // Then, average the gradient over the batch size
-    Matrix<double> weightsGradient = input.transpose().dotTiling(outputError) / static_cast<double>(input.get_rows());
-
-    // Calculate error w.r.t the input of this layer (needed for previous layer in the network)
-    // This error is also averaged over the batch size
-    Matrix<double> inputError = outputError.dotTiling(weights.transpose()) / static_cast<double>(outputError.get_rows());
-
-    // Store gradients for weights and biases for later use in updateWeights
-    // Averaging the biases gradient over the batch size
-    biasesError = outputError.sum(0) / static_cast<double>(outputError.get_rows());
+Matrix<double> DenseLayer::backwardPropagate(Matrix<double>& currentLayerError) {
+    // Averaging the values over the batch size
+    Matrix<double> weightGradients = input.transpose().dotTiling(currentLayerError) / static_cast<double>(input.get_rows());
+    Matrix<double> biasGradients = currentLayerError.sum(0) / static_cast<double>(currentLayerError.get_rows());
 
     // Store the averaged gradients
-    weightsError = weightsGradient;
-    biasesError = biasesError;
+    storedWeightGradients = weightGradients;
+    storedBiasGradients = biasGradients;
 
-    return inputErr0or;  // Return the calculated input error
+    Matrix<double> propagatedError = currentLayerError.dotTiling(input.transpose()) / static_cast<double>(currentLayerError.get_rows());
+
+    return propagatedError;  // Return the calculated input error
 }
 
 // Update Weights using an optimizer
 void DenseLayer::update(Optimizer<double>& optimizer, double learningRate) {
     // Update weights and biases using the optimizer, based on stored gradients and learning rate
-    optimizer.update(weights, biases, weightsError, biasesError, learningRate);
-}
-
-// Getters for weights and biases
-Matrix<double>& DenseLayer::getWeights() {
-    return weights;  // Return reference to weights matrix
-}
-
-Matrix<double>& DenseLayer::getBiases() {
-    return biases;  // Return reference to biases matrix
-}
-
-// Setters for weights and biases
-void DenseLayer::setWeights(Matrix<double>& newWeights) {
-    // Set new weights, ensure size compatibility
-    if (this->weights.get_rows() != newWeights.get_rows() || this->weights.get_cols() != newWeights.get_cols()) {
-        this->weights = Matrix<double>(newWeights.get_rows(), newWeights.get_cols());
-    }
-    this->weights = newWeights;
-}
-
-void DenseLayer::setBiases(Matrix<double>& newBiases) {
-    // Set new biases, ensure size compatibility
-    if (this->biases.get_rows() != newBiases.get_rows() || this->biases.get_cols() != newBiases.get_cols()) {
-        this->biases = Matrix<double>(newBiases.get_rows(), newBiases.get_cols());
-    }
-    this->biases = newBiases;
+    optimizer.update(weights, biases, storedWeightGradients, storedBiasGradients, learningRate);
 }
