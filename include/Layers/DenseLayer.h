@@ -16,9 +16,6 @@ public:
     Matrix<double>& getWeights();
     Matrix<double>& getBiases();
 
-    void setWeights(Matrix<double>& newWeights);
-    void setBiases(Matrix<double>& newBiases);
-
 private:
     Matrix<double> weights, biases;
     Matrix<double> storedWeightGradients, storedBiasGradients;

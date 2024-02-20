@@ -25,8 +25,10 @@ public:
     void setLastErrorValue(double errorValue);
     std::string returnErrorName();
     std::string returnOptimizerName();
+    Error<double>* getError() const;
 
-    std::pair<std::vector<Matrix<double>>, std::vector<Matrix<double>>> getWeights();
+
+    std::pair<std::vector<Matrix<double>>, std::vector<Matrix<double>>> getParameters();
     void save(const std::string& filename);
     void load(const std::string& filename);
     nlohmann::json matrixToJson(Matrix<double>& matrix);

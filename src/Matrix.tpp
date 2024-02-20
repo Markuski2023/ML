@@ -1,10 +1,5 @@
-#include "../include/Matrix.h"
-
-#include <omp.h>
 #include <stdexcept>
 #include <random>
-#include <chrono>
-#include <map>
 
 // Default constructor
 template <typename T>
@@ -272,13 +267,13 @@ T& Matrix<T>::operator()(const unsigned& row, const unsigned& col) {
 
 // Getter for the number of rows
 template <typename T>
-unsigned Matrix<T>::get_rows() const {
+int Matrix<T>::getRows() const {
     return this->rows;
 }
 
 // Getter for the number of columns
 template <typename T>
-unsigned Matrix<T>::get_cols() const {
+int Matrix<T>::getCols() const {
     return this->cols;
 }
 
@@ -303,7 +298,7 @@ Matrix<T> Matrix<T>::dotTiling(const Matrix<T>& rhs) const {
         throw std::invalid_argument("Incompatible dimensions for matrix multiplication");
     }
 
-    unsigned tileSize = 128;
+    int tileSize = 128;
 
     Matrix<T> result(this->rows, rhs.cols, 0);
 
@@ -350,6 +345,20 @@ Matrix<T> Matrix<T>::sum(int dim) const {
         throw std::invalid_argument("Invalid dimension for sum. Use 0 for columns or 1 for rows.");
     }
 }
+
+template<typename T>
+std::vector<T> Matrix<T>::convertMatrixToVector(Matrix<T> &input) {
+    std::vector<T> return_vector;
+    return_vector.reserve(input.rows * input.cols);
+    for (size_t i = 0; i < input.rows; ++i) {
+        for (size_t j = 0; j < input.cols; j++) {
+            return_vector.push_back(input(i, j));
+        }
+    }
+    return return_vector;
+}
+
+
 
 // Print function
 template <typename T>

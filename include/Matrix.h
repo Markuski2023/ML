@@ -3,6 +3,10 @@
 
 #include <vector>
 #include <iostream>
+#include <random>
+
+#include "../include/Matrix.h"
+
 
 // Templated class to allow for flexibility with different data types
 template <typename T>
@@ -63,10 +67,9 @@ public:
     // Function to access or modify elements of the matrix
     T& operator()(const unsigned& row, const unsigned& col);
 
-    // Getter for the number of rows in the matrix
-    unsigned get_rows() const;
-    //Getter for the number of columns in the matrix
-    unsigned get_cols() const;
+    // Getter for the number of rows/cols in the matrix
+    [[nodiscard]] int getRows() const;
+    [[nodiscard]] int getCols() const;
 
     // Function to transpose the matrix
     Matrix<T> transpose();
@@ -74,9 +77,10 @@ public:
     // Function to do a dot-product between two matrices
     Matrix<T> dotTiling(const Matrix<T>& rhs) const;
 
-    Matrix<T> Hadamard(const Matrix<T>& rhs) const;
-
     Matrix<T> sum(int dim = 0) const;
+
+    std::vector<T> convertMatrixToVector(Matrix<T>& input);
+    Matrix<T> convertVectorToMatrix(std::vector<T>& input, size_t rows, size_t cols);
 
     // Utility function to print the matrix to console
     void print() const;

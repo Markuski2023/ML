@@ -42,15 +42,15 @@ void NeuralNetwork::updateNetwork() {
 
 double NeuralNetwork::calculateTotalError(Matrix<double> &errorGradient) {
     double totalError = 0.0;
-    for (size_t i = 0; i < errorGradient.get_rows(); ++i) {
-        for (size_t j = 0; j < errorGradient.get_cols(); ++j) {
+    for (size_t i = 0; i < errorGradient.getRows(); ++i) {
+        for (size_t j = 0; j < errorGradient.getCols(); ++j) {
             totalError += errorGradient(i, j);
         }
     }
     return totalError;
 }
 
-std::pair<std::vector<Matrix<double>>, std::vector<Matrix<double>>> NeuralNetwork::getWeights() {
+std::pair<std::vector<Matrix<double>>, std::vector<Matrix<double>>> NeuralNetwork::getParameters() {
     std::vector<Matrix<double>> weights;
     std::vector<Matrix<double>> biases;
 
@@ -68,6 +68,10 @@ std::pair<std::vector<Matrix<double>>, std::vector<Matrix<double>>> NeuralNetwor
 
 double NeuralNetwork::getLastErrorValue() {
     return lastErrorValue;
+}
+
+Error<double>* NeuralNetwork::getError() const {
+    return error;
 }
 
 void NeuralNetwork::setLastErrorValue(double errorValue) {
