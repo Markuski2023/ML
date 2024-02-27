@@ -7,7 +7,7 @@
 template <typename T>
 class BinaryCrossEntropy : public Error<T> {
 public:
-    double calculateError(Matrix<T>& predicted, Matrix<T>& actual) override {
+    double calculateError(Eigen::MatrixXd& predicted, Eigen::MatrixXd& actual) override {
 
     }
 };

@@ -3,6 +3,8 @@ project(ML)
 
 set(CMAKE_CXX_STANDARD 17)
 
+include_directories("eigen-3.4.0/Eigen")
+
 add_executable(ML
         include/Matrix.h
         include/Optimizers/Optimizer.h
@@ -26,4 +28,5 @@ add_executable(ML
         src/DataLoader.cpp
         tests/DataLoaderTests.cpp
         include/Layers/FlattenLayer.h
+        eigen-3.4.0/
 )

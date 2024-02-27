@@ -85,6 +85,9 @@ public:
     // Utility function to print the matrix to console
     void print() const;
 
+    static Matrix<T> concatenateColumns(const Matrix<T>& a, const Matrix<T>& b);
+    static Matrix<T> ones(unsigned rows, unsigned cols);
+
 // Variables to store the number of rows and columns in the matrix
 private:
     // 2D vector to store the matrix data

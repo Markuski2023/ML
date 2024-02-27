@@ -4,8 +4,6 @@
 DenseLayer::DenseLayer(unsigned inputSize, unsigned outputSize)
         : weights(inputSize, outputSize), biases(1, outputSize) {}
 
-DenseLayer::DenseLayer() {}
-
 // Forward pass computation
 Matrix<double> DenseLayer::forwardPropagate(Matrix<double>& input)  {
     this->input = input;  // Store the input matrix for use in backpropagation

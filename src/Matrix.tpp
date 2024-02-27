@@ -26,7 +26,7 @@ Matrix<T>::Matrix(std::vector<std::vector<T>> input) {
             throw std::invalid_argument("Constructor error: Inconsistent number of columns in input vector.");
         }
         for (size_t j = 0; j < cols; ++j) {
-            mat[i][j] = input[i][j];
+            mat[i][j] = std::move(input[i][j]);
         }
     }
 }
@@ -352,7 +352,7 @@ std::vector<T> Matrix<T>::convertMatrixToVector(Matrix<T> &input) {
     return_vector.reserve(input.rows * input.cols);
     for (size_t i = 0; i < input.rows; ++i) {
         for (size_t j = 0; j < input.cols; j++) {
-            return_vector.push_back(input(i, j));
+            return_vector.emplace_back(input(i, j));
         }
     }
     return return_vector;
@@ -369,4 +369,31 @@ void Matrix<T>::print() const {
         }
         std::cout << std::endl; // New line at the end of each row
     }
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::concatenateColumns(const Matrix<T>& a, const Matrix<T>& b) {
+    // Check that the matrices have the same number of rows
+    if (a.getRows() != b.getRows()) {
+        throw std::invalid_argument("Error: matrices must have the same number of rows");
+    }
+
+    // Create a new matrix with the sum of the columns of a and b
+    Matrix<T> result(a.getRows(), a.getCols() + b.getCols());
+    for (unsigned i = 0; i < a.getRows(); i++) {
+        std::copy(a.getRows(i).begin(), a.getRows(i).end(), result.getRows(i).begin());
+        std::copy(b.getRows(i).begin(), b.getRows(i).end(), result.getRows(i).begin() + a.getCols());
+    }
+    return result;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::ones(unsigned rows, unsigned cols) {
+    Matrix<T> result(rows, cols);
+    for (unsigned i = 0; i < rows; i++) {
+        for (unsigned j = 0; j < cols; j++) {
+            result(i, j) = 1;
+        }
+    }
+    return result;
 }

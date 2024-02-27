@@ -1,7 +1,7 @@
 #ifndef ML_DENSELAYER_H
 #define ML_DENSELAYER_H
 
-#include "../Matrix.h"
+#include <Eigen>  // Include Eigen library
 #include "Layer.h"
 #include "../Optimizers/Optimizer.h"
 
@@ -9,17 +9,17 @@ class DenseLayer : public Layer {
 public:
     DenseLayer();
     DenseLayer(unsigned inputSize, unsigned outputSize);
-    Matrix<double> forwardPropagate(Matrix<double>& input) override;
-    Matrix<double> backwardPropagate(Matrix<double>& input) override;
+    Eigen::MatrixXd forwardPropagate(Eigen::MatrixXd& input) override;
+    Eigen::MatrixXd backwardPropagate(Eigen::MatrixXd& input) override;
     void update(Optimizer<double>& optimizer, double learningRate);
 
-    Matrix<double>& getWeights();
-    Matrix<double>& getBiases();
+    Eigen::MatrixXd& getWeights();
+    Eigen::MatrixXd& getBiases();
 
 private:
-    Matrix<double> weights, biases;
-    Matrix<double> storedWeightGradients, storedBiasGradients;
-    Matrix<double> input;
+    Eigen::MatrixXd weights, biases;
+    Eigen::MatrixXd storedWeightGradients, storedBiasGradients;
+    Eigen::MatrixXd input;  // Input data for the layer
 };
 
 #endif // ML_DENSELAYER_H
