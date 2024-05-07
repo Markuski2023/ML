@@ -21,24 +21,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e9a371a-2224-4556-8dcb-2a7d1d4ef920" name="Changes" comment="Just about everything">
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/ErrorFunctions/BinaryCrossEntropyError.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ErrorFunctions/BinaryCrossEntropyError.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/ErrorFunctions/CategoricalCrossEntropyError.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ErrorFunctions/CategoricalCrossEntropyError.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/ErrorFunctions/Error.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ErrorFunctions/Error.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/ErrorFunctions/MeanSquaredError.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ErrorFunctions/MeanSquaredError.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Layers/DenseLayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Layers/DenseLayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Layers/Layer.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Layers/Layer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Matrix.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/NeuralNetwork.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/NeuralNetwork.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DenseLayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DenseLayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Matrix.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.tpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/NeuralNetwork.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +39,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLabMergeRequestsSettings">{}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="GithubPullRequestsUISettings">{}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_HOME_DIR$/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_construct.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_HOME_DIR$/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream" root0="FORCE_HIGHLIGHTING" />
@@ -177,6 +165,8 @@
       <workItem from="1708446333270" duration="1202000" />
       <workItem from="1708717364306" duration="3213000" />
       <workItem from="1708721165651" duration="1710000" />
+      <workItem from="1709975294519" duration="96000" />
+      <workItem from="1715068532637" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="Added comments to Neural Network class">
       <option name="closed" value="true" />
